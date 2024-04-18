@@ -48,13 +48,15 @@ public class Main {
 
         swap(arr,middle,end);
 
-        int i = (begin-1);
+        int i = begin-1;
 
-        for (int j = begin; j < end; j++) {
+        for (int j = begin; j < end; ++j) {
             if (arr[j].compareTo(pivot) < 0) {
                 i++;
 
-                swap(arr,i,j);
+                if (i!=j) {
+                    swap(arr, i, j);
+                }
             }
         }
 
