@@ -34,8 +34,6 @@ public class FasterMain {
             for (int j=0; j<3; ++j) {
                 checkMushroom(i,j);
             }
-
-            System.out.println(Arrays.toString(results));
         }
 
         System.out.println(Arrays.stream(results).max().getAsInt());
