@@ -1,5 +1,8 @@
 package me.inqu1sitor;
 
+import java.time.Duration;
+import java.time.Instant;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
@@ -19,11 +22,20 @@ public class Main {
 
         in.close();
 
-        int low = goThisWay(forest, 0, 0, raws);
-        int middle = goThisWay(forest, 0, 1, raws);
-        int high = goThisWay(forest, 0, 2, raws);
+        int[] results=new int[3];
 
-        System.out.println(Math.max(high,Math.max(middle,low)));
+        Instant start=Instant.now();
+        results[0] = goThisWay(forest, 0, 0, raws);
+        results[1] = goThisWay(forest, 0, 1, raws);
+        results[2] = goThisWay(forest, 0, 2, raws);
+
+        int result= Arrays.stream(results).max().getAsInt();
+
+        Instant end=Instant.now();
+
+        System.out.println(Duration.between(start, end));
+
+        System.out.println(result);
     }
 
     public static int goThisWay(char[][] forest, int raw, int i, int raws) {
