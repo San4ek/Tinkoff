@@ -36,11 +36,9 @@ public class FasterMain {
             }
 
             results[0]=results[1].clone();
-
-            System.out.println(Arrays.toString(results[1]));
         }
 
-        System.out.println(Arrays.stream(results[1]).max());
+        System.out.println(Arrays.stream(results[1]).max().getAsInt());
     }
 
     public static void checkMushroom(int raw, int index) {
