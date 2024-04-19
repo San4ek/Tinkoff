@@ -42,6 +42,6 @@ public class FasterMain {
     }
 
     public static void checkMushroom(int raw, int index) {
-        if (forest[raw].charAt(index)=='C') ++results[1][index];
+        if (results[1][index]!=-1 && forest[raw].charAt(index)=='C') ++results[1][index];
     }
 }
