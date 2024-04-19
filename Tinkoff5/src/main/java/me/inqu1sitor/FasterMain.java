@@ -7,7 +7,7 @@ public class FasterMain {
 
     static int raws;
     static String[] forest;
-    static int[] results=new int[3];
+    static int[][] results=new int[2][3];
 
     public static void main(String[] args) {
 
@@ -27,19 +27,23 @@ public class FasterMain {
                     forest[i].charAt(1)=='W' &&
                     forest[i].charAt(2)=='W') break;
 
-            results[0]=Math.max(results[0],results[1]);
-            results[2]=Math.max(results[2],results[1]);
-            results[1]=Math.max(results[0],results[2]);
+            results[1][0]=forest[i].charAt(0)!='W' ? Math.max(results[0][0],results[0][1]) : -1;
+            results[1][2]=forest[i].charAt(2)!='W' ? Math.max(results[0][2],results[0][1]) : -1;
+            results[1][1]=forest[i].charAt(1)!='W' ? Math.max(results[0][2],results[0][0]) : -1;
 
             for (int j=0; j<3; ++j) {
                 checkMushroom(i,j);
             }
+
+            results[0]=results[1].clone();
+
+            System.out.println(Arrays.toString(results[1]));
         }
 
-        System.out.println(Arrays.stream(results).max().getAsInt());
+        System.out.println(Arrays.stream(results[1]).max());
     }
 
     public static void checkMushroom(int raw, int index) {
-        if (forest[raw].charAt(index)=='C') ++results[index];
+        if (forest[raw].charAt(index)=='C') ++results[1][index];
     }
 }
